@@ -4,6 +4,8 @@ type IconName =
   | "clock"
   | "search"
   | "shuffle"
+  | "eye"
+  | "eyeOff"
   | "chevronDown"
   | "chevronUp"
   | "arrowRight"
@@ -62,6 +64,22 @@ export function Icon({
           <path d="M16 21h5v-5" />
           <path d="M4 4l6 6" />
           <path d="M14 14l6 6" />
+        </svg>
+      );
+    case "eye":
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...common}>
+          <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      );
+    case "eyeOff":
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...common}>
+          <path d="M3 3l18 18" />
+          <path d="M10.6 10.6A3 3 0 0 0 12 15a3 3 0 0 0 2.4-4.4" />
+          <path d="M9.9 5.1A10.5 10.5 0 0 1 12 5c6 0 10 7 10 7a18.6 18.6 0 0 1-4.2 4.9" />
+          <path d="M6.1 6.1C3.9 7.8 2 10.8 2 12s4 7 10 7c1.1 0 2.1-.2 3.1-.5" />
         </svg>
       );
     case "chevronDown":

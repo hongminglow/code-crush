@@ -30,6 +30,7 @@ export default function App() {
     initialCategoryFromHash(),
   );
   const [query, setQuery] = useState("");
+  const [revealSolutions, setRevealSolutions] = useState(false);
   const queryNorm = useMemo(() => normalizeQuery(query), [query]);
 
   const searchRef = useRef<HTMLInputElement>(null);
@@ -167,6 +168,24 @@ export default function App() {
             />
             <button
               type="button"
+              onClick={() => setRevealSolutions((v) => !v)}
+              className={
+                "inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-transparent px-3 text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 " +
+                (revealSolutions
+                  ? "text-cc-accent hover:text-cc-text"
+                  : "text-cc-muted hover:text-cc-text")
+              }
+              aria-pressed={revealSolutions}
+              aria-label={revealSolutions ? "Hide solutions" : "Show solutions"}
+            >
+              <Icon
+                name={revealSolutions ? "eyeOff" : "eye"}
+                className="h-[18px] w-[18px]"
+              />
+              Solutions
+            </button>
+            <button
+              type="button"
               onClick={randomPick}
               className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-transparent px-3 text-sm font-bold text-cc-accent transition-colors hover:text-cc-text"
             >
@@ -222,6 +241,7 @@ export default function App() {
                   }
                   solved={solvedIds.has(q.id)}
                   onToggleSolved={() => toggleSolved(q.id)}
+                  revealSolutions={revealSolutions}
                 />
               </div>
             ))

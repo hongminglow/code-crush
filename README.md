@@ -1,4 +1,4 @@
-# CodeCrush
+# Code Crush
 
 Interview prep, but with fewer tabs and more reps.
 

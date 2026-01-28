@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Difficulty, Question } from "../data/types";
 import { Chip } from "./Badge";
 import { Icon } from "./Icon";
@@ -18,18 +18,27 @@ export function AccordionItem({
   onToggleOpen,
   solved,
   onToggleSolved,
+  revealSolutions,
 }: {
   question: Question;
   open: boolean;
   onToggleOpen: () => void;
   solved: boolean;
   onToggleSolved: () => void;
+  revealSolutions?: boolean;
 }) {
   const code = useMemo(
     () => normalizeWhitespace(question.code.content),
     [question.code.content],
   );
   const [copied, setCopied] = useState(false);
+  const [showSolution, setShowSolution] = useState(false);
+
+  const solutionVisible = Boolean(revealSolutions) || showSolution;
+
+  useEffect(() => {
+    if (open && !revealSolutions) setShowSolution(false);
+  }, [open, question.id, revealSolutions]);
 
   async function copy() {
     try {
@@ -83,10 +92,37 @@ export function AccordionItem({
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
+                    setShowSolution((prev) => !prev);
+                  }}
+                  className={
+                    "inline-flex items-center gap-2 rounded-lg border border-cc-border bg-cc-bg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 " +
+                    (solutionVisible
+                      ? "text-indigo-200 hover:text-cc-text"
+                      : "text-cc-muted hover:text-cc-text")
+                  }
+                  aria-pressed={solutionVisible}
+                >
+                  <Icon
+                    name={solutionVisible ? "eyeOff" : "eye"}
+                    className="h-4 w-4"
+                  />
+                  {solutionVisible ? "Hide" : "Show"}
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (!solutionVisible) return;
                     copy();
                   }}
-                  className="inline-flex items-center gap-2 rounded-lg border border-cc-border bg-cc-bg px-3 py-2 text-xs font-semibold text-cc-muted transition-colors hover:text-cc-text"
+                  className={
+                    "inline-flex items-center gap-2 rounded-lg border border-cc-border bg-cc-bg px-3 py-2 text-xs font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 " +
+                    (solutionVisible
+                      ? "text-cc-muted hover:text-cc-text"
+                      : "cursor-not-allowed text-cc-muted/40")
+                  }
                   aria-label="Copy code"
+                  disabled={!solutionVisible}
                 >
                   <Icon name={copied ? "check" : "copy"} className="h-4 w-4" />
                   {copied ? "Copied" : "Copy"}
@@ -109,16 +145,25 @@ export function AccordionItem({
               </div>
             </div>
 
-            <pre className="overflow-x-auto rounded-lg bg-cc-bg p-4 text-xs leading-relaxed text-cc-text">
-              <code className="font-mono">{code}</code>
-            </pre>
+            {solutionVisible ? (
+              <>
+                <pre className="overflow-x-auto rounded-lg bg-cc-bg p-4 text-xs leading-relaxed text-cc-text">
+                  <code className="font-mono">{code}</code>
+                </pre>
 
-            {question.complexity ? (
-              <div className="mt-3 text-xs font-semibold text-cc-muted">
-                Time: {question.complexity.time} • Space:{" "}
-                {question.complexity.space}
+                {question.complexity ? (
+                  <div className="mt-3 text-xs font-semibold text-cc-muted">
+                    Time: {question.complexity.time} • Space:{" "}
+                    {question.complexity.space}
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <div className="rounded-lg border border-cc-border bg-cc-bg p-4 text-xs font-semibold text-cc-muted">
+                Solution hidden — click{" "}
+                <span className="text-cc-text">Show</span> when you’re ready.
               </div>
-            ) : null}
+            )}
           </div>
 
           <div className="flex flex-wrap gap-2">

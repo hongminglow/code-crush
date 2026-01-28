@@ -7,7 +7,7 @@
 ---
 
 **Project:** CodeCrush
-**Generated:** 2026-01-29 00:59:36
+**Generated:** 2026-01-29 02:16:28
 **Category:** Coding Bootcamp
 
 ---
@@ -157,10 +157,11 @@
 
 ### Page Pattern
 
-**Pattern Name:** Feature-Rich + Social Proof
+**Pattern Name:** App Store Style Landing
 
-- **CTA Placement:** Above fold
-- **Section Order:** Hero > Features > CTA
+- **Conversion Strategy:** Show real screenshots. Include ratings (4.5+ stars). QR code for mobile. Platform-specific CTAs.
+- **CTA Placement:** Download buttons prominent (App Store + Play Store) throughout
+- **Section Order:** 1. Hero with device mockup, 2. Screenshots carousel, 3. Features with icons, 4. Reviews/ratings, 5. Download CTAs
 
 ---
 
