@@ -12,6 +12,19 @@ export type Question = {
   difficulty: Difficulty;
   tags: string[];
   prompt: string;
+  details?: {
+    description: string;
+    examples?: Array<{
+      input: string;
+      output: string;
+      explanation?: string;
+    }>;
+    constraints?: string[];
+  };
+  starter?: {
+    language: CodeLanguage;
+    content: string;
+  };
   code: {
     language: CodeLanguage;
     content: string;

@@ -13,7 +13,19 @@ function normalizeQuery(value: string) {
 
 function matchesQuestion(q: Question, query: string) {
   if (!query) return true;
+  const detailsText = q.details
+    ? [
+        q.details.description,
+        (q.details.examples ?? [])
+          .map((ex) =>
+            [ex.input, ex.output, ex.explanation].filter(Boolean).join("\n"),
+          )
+          .join("\n"),
+        (q.details.constraints ?? []).join("\n"),
+      ].join("\n")
+    : "";
   const hay = [q.title, q.subtitle, q.prompt, q.tags.join(" ")]
+    .concat(detailsText)
     .join("\n")
     .toLowerCase();
   return hay.includes(query);
@@ -36,7 +48,9 @@ export default function App() {
   const searchRef = useRef<HTMLInputElement>(null);
   const itemRefs = useRef(new Map<string, HTMLDivElement | null>());
 
-  const [solvedIds, setSolvedIds] = useState<Set<string>>(() => new Set());
+  const [solvedIds, setSolvedIds] = useState<Set<string>>(() =>
+    loadSolvedIds(),
+  );
   const solvedCount = solvedIds.size;
 
   const category = useMemo(
@@ -57,6 +71,13 @@ export default function App() {
     return first?.id;
   });
 
+  const effectiveExpandedId = useMemo(() => {
+    if (!filteredQuestions.length) return undefined;
+    if (!expandedId) return undefined;
+    if (filteredQuestions.some((q) => q.id === expandedId)) return expandedId;
+    return filteredQuestions[0].id;
+  }, [expandedId, filteredQuestions]);
+
   useEffect(() => {
     const onHash = () => setActiveCategory(initialCategoryFromHash());
     window.addEventListener("hashchange", onHash);
@@ -64,8 +85,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    setSolvedIds(loadSolvedIds());
-  }, []);
+    // Keep the URL in sync with the active tab.
+    if (window.location.hash.replace(/^#/, "") !== activeCategory) {
+      window.location.hash = activeCategory;
+    }
+  }, [activeCategory]);
 
   useEffect(() => {
     saveSolvedIds(solvedIds);
@@ -84,22 +108,7 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  useEffect(() => {
-    // keep a sensible expanded default when category/search changes
-    if (!filteredQuestions.length) {
-      setExpandedId(undefined);
-      return;
-    }
-    // If the currently expanded item disappears due to category/search changes,
-    // fall back to the first visible item. If expandedId is undefined, respect
-    // that (user may have collapsed everything).
-    if (expandedId && !filteredQuestions.some((q) => q.id === expandedId)) {
-      setExpandedId(filteredQuestions[0].id);
-    }
-  }, [activeCategory, filteredQuestions, expandedId]);
-
   function setCategory(id: CategoryId) {
-    window.location.hash = id;
     setActiveCategory(id);
   }
 
@@ -235,9 +244,11 @@ export default function App() {
               >
                 <AccordionItem
                   question={q}
-                  open={expandedId === q.id}
+                  open={effectiveExpandedId === q.id}
                   onToggleOpen={() =>
-                    setExpandedId((prev) => (prev === q.id ? undefined : q.id))
+                    setExpandedId(
+                      effectiveExpandedId === q.id ? undefined : q.id,
+                    )
                   }
                   solved={solvedIds.has(q.id)}
                   onToggleSolved={() => toggleSolved(q.id)}

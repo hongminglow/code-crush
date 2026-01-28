@@ -48,6 +48,33 @@ export const questions: Question[] = [
     tags: ["hash map"],
     prompt:
       "Prompt: Given nums[] and target, find two distinct indices i,j such that nums[i] + nums[j] = target.",
+    details: {
+      description:
+        "Given an array of integers nums and an integer target, return the indices of two different elements such that their values add up to target.\nAssume there is exactly one valid answer. You may not use the same element twice.",
+      examples: [
+        {
+          input: "nums = [2, 7, 11, 15], target = 9",
+          output: "[0, 1]",
+          explanation: "nums[0] + nums[1] = 2 + 7 = 9",
+        },
+        {
+          input: "nums = [3, 2, 4], target = 6",
+          output: "[1, 2]",
+        },
+      ],
+      constraints: [
+        "2 ≤ nums.length",
+        "Numbers can be negative or positive",
+        "Exactly one valid pair exists",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function twoSum(nums, target) {
+  // TODO: return [i, j]
+}
+`,
+    },
     code: {
       language: "js",
       content: `function twoSum(nums, target) {
@@ -72,6 +99,30 @@ export const questions: Question[] = [
     tags: ["hash map", "sorting"],
     prompt:
       "Prompt: Given an array of strings, group the anagrams together (order of groups doesn't matter).",
+    details: {
+      description:
+        "Given an array of strings, group strings that are anagrams of each other.\nTwo strings are anagrams if they contain the same characters with the same counts (order doesn't matter).",
+      examples: [
+        {
+          input: 'strs = ["eat","tea","tan","ate","nat","bat"]',
+          output:
+            '[["eat","tea","ate"],["tan","nat"],["bat"]] (order may vary)',
+          explanation: '"eat", "tea", and "ate" share the same letters.',
+        },
+      ],
+      constraints: [
+        "0 ≤ strs.length",
+        "Each string may be empty",
+        "You can return groups in any order",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function groupAnagrams(strs) {
+  // TODO: return grouped anagrams
+}
+`,
+    },
     code: {
       language: "js",
       content: `function groupAnagrams(strs) {
@@ -100,6 +151,34 @@ export const questions: Question[] = [
     tags: ["prefix", "suffix"],
     prompt:
       "Prompt: Return an array output where output[i] is the product of all nums[j] for j != i (no division).",
+    details: {
+      description:
+        "Given an integer array nums, return an array output where output[i] equals the product of all values in nums except nums[i].\nDo this without using division.",
+      examples: [
+        {
+          input: "nums = [1, 2, 3, 4]",
+          output: "[24, 12, 8, 6]",
+        },
+        {
+          input: "nums = [-1, 1, 0, -3, 3]",
+          output: "[0, 0, 9, 0, 0]",
+          explanation:
+            "If there is a single zero, only the zero position gets the product of non-zero values.",
+        },
+      ],
+      constraints: [
+        "2 ≤ nums.length",
+        "Values may include 0 and negatives",
+        "Aim for O(n) time",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function productExceptSelf(nums) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function productExceptSelf(nums) {
@@ -133,6 +212,32 @@ export const questions: Question[] = [
     tags: ["hash map", "bucket"],
     prompt:
       "Prompt: Return the k most frequent elements. Aim for better than O(n log n) when possible.",
+    details: {
+      description:
+        "Given an integer array nums and an integer k, return the k values that appear most frequently.\nYou can return the answer in any order.",
+      examples: [
+        {
+          input: "nums = [1,1,1,2,2,3], k = 2",
+          output: "[1, 2]",
+        },
+        {
+          input: "nums = [4,4,4,6,6,7], k = 1",
+          output: "[4]",
+        },
+      ],
+      constraints: [
+        "1 ≤ k ≤ number of distinct values",
+        "Return order does not matter",
+        "Try for better than sorting all elements",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function topKFrequent(nums, k) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function topKFrequent(nums, k) {
@@ -167,6 +272,29 @@ export const questions: Question[] = [
     tags: ["set"],
     prompt:
       "Prompt: Given an unsorted array, return the length of the longest consecutive elements sequence (O(n)).",
+    details: {
+      description:
+        "Given an unsorted array of integers, return the length of the longest sequence of consecutive integers.\nConsecutive means x, x+1, x+2, ... (order in the original array does not matter).",
+      examples: [
+        {
+          input: "nums = [100, 4, 200, 1, 3, 2]",
+          output: "4",
+          explanation: "The longest consecutive run is [1,2,3,4].",
+        },
+      ],
+      constraints: [
+        "Array may be unsorted",
+        "Duplicates may exist",
+        "Target O(n) time using a set",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function longestConsecutive(nums) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function longestConsecutive(nums) {
@@ -201,6 +329,33 @@ export const questions: Question[] = [
     tags: ["sliding window"],
     prompt:
       "Prompt: Find the minimum substring window of s that contains every character of t (with multiplicity).",
+    details: {
+      description:
+        "Given strings s and t, return the smallest substring of s that contains all characters of t (including repeated counts).\nIf no such substring exists, return an empty string.",
+      examples: [
+        {
+          input: 's = "ADOBECODEBANC", t = "ABC"',
+          output: '"BANC"',
+        },
+        {
+          input: 's = "a", t = "aa"',
+          output: '""',
+          explanation: "You cannot form two 'a' characters from a single 'a'.",
+        },
+      ],
+      constraints: [
+        "s and t are strings",
+        "Character counts matter (multiplicity)",
+        "Prefer O(|s| + |t|) sliding window",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function minWindow(s, t) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function minWindow(s, t) {
@@ -857,6 +1012,34 @@ function deserialize(data) {
     tags: ["topo", "bfs"],
     prompt:
       "Prompt: Given prerequisites, return whether you can finish all courses (graph has no cycle).",
+    details: {
+      description:
+        "There are numCourses courses labeled from 0 to numCourses - 1.\nYou are given prerequisites pairs [a, b] meaning you must take course b before course a.\nReturn true if you can complete all courses (i.e., the prerequisite graph has no cycle).",
+      examples: [
+        {
+          input: "numCourses = 2, prerequisites = [[1,0]]",
+          output: "true",
+          explanation: "Take 0 first, then 1.",
+        },
+        {
+          input: "numCourses = 2, prerequisites = [[1,0],[0,1]]",
+          output: "false",
+          explanation: "There is a cycle between 0 and 1.",
+        },
+      ],
+      constraints: [
+        "Courses are labeled 0..numCourses-1",
+        "Prerequisites form a directed graph",
+        "Detect cycles (topo sort or DFS coloring)",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function canFinish(numCourses, prerequisites) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function canFinish(numCourses, prerequisites) {
@@ -1321,6 +1504,33 @@ function deserialize(data) {
     tags: ["1d dp"],
     prompt:
       "Prompt: Given coin denominations and amount, return the fewest coins to make amount (or -1).",
+    details: {
+      description:
+        "Given coin denominations and a target amount, compute the minimum number of coins needed to make exactly that amount.\nYou can use each coin value any number of times. If it is impossible, return -1.",
+      examples: [
+        {
+          input: "coins = [1,2,5], amount = 11",
+          output: "3",
+          explanation: "11 = 5 + 5 + 1",
+        },
+        {
+          input: "coins = [2], amount = 3",
+          output: "-1",
+        },
+      ],
+      constraints: [
+        "coins contains positive integers",
+        "amount is a non-negative integer",
+        "Order of coins does not matter; you’re minimizing count",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function coinChange(coins, amount) {
+  // TODO
+}
+`,
+    },
     code: {
       language: "js",
       content: `function coinChange(coins, amount) {
@@ -1584,6 +1794,32 @@ function deserialize(data) {
     tags: ["async"],
     prompt:
       "Prompt: Given code mixing sync logs, Promise.then, and setTimeout, predict the output order.",
+    details: {
+      description:
+        "You are given a JavaScript snippet that schedules work using synchronous code, Promise microtasks, and timer macrotasks.\nWrite the exact console output order, and briefly explain why that order happens.",
+      examples: [
+        {
+          input:
+            "console.log('A');\nPromise.resolve().then(() => console.log('micro'));\nsetTimeout(() => console.log('macro'), 0);\nconsole.log('B');",
+          output: "A\nB\nmicro\nmacro",
+          explanation:
+            "Microtasks run after the current call stack, before timers.",
+        },
+      ],
+      constraints: [
+        "Assume standard JS event loop ordering",
+        "Explain sync vs microtask vs macrotask",
+        "Bonus: mention Node.js process.nextTick priority if you know it",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `// Predict the output order before running:
+// 1) synchronous code
+// 2) Promise microtasks (.then)
+// 3) timer macrotasks (setTimeout)
+`,
+    },
     code: {
       language: "js",
       content: `console.log('A');

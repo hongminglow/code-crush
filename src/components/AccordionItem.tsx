@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { Difficulty, Question } from "../data/types";
 import { Chip } from "./Badge";
 import { Icon } from "./Icon";
@@ -10,6 +10,42 @@ function difficultyVariant(difficulty: Difficulty) {
 
 function normalizeWhitespace(text: string) {
   return text.replace(/\r\n/g, "\n");
+}
+
+function cleanPrompt(prompt: string) {
+  return normalizeWhitespace(prompt).replace(/^\s*Prompt:\s*/i, "").trim();
+}
+
+function deriveStarterFromSolution(solution: string) {
+  const s = normalizeWhitespace(solution).trim();
+
+  const fn = s.match(/function\s+([A-Za-z_$][\w$]*)\s*\(([^)]*)\)\s*\{/);
+  if (fn) {
+    return `function ${fn[1]}(${fn[2]}) {\n  // TODO: implement\n}\n`;
+  }
+
+  const cls = s.match(/class\s+([A-Za-z_$][\w$]*)\s*\{/);
+  if (cls) {
+    const className = cls[1];
+    const methodNames = Array.from(
+      new Set(
+        Array.from(
+          s.matchAll(/\n\s*([A-Za-z_$][\w$]*)\s*\(([^)]*)\)\s*\{/g),
+        )
+          .map((m) => ({ name: m[1], args: m[2] }))
+          .filter((m) => m.name !== "if" && m.name !== "for" && m.name !== "while"),
+      ),
+    );
+
+    const methods = methodNames
+      .slice(0, 6)
+      .map((m) => `  ${m.name}(${m.args}) {\n    // TODO\n  }`)
+      .join("\n\n");
+
+    return `class ${className} {\n  constructor(/* ... */) {\n    // TODO\n  }\n\n${methods || "  // TODO"}\n}\n`;
+  }
+
+  return "// Start here\n// Write your solution in JavaScript\n";
 }
 
 export function AccordionItem({
@@ -27,18 +63,22 @@ export function AccordionItem({
   onToggleSolved: () => void;
   revealSolutions?: boolean;
 }) {
-  const code = useMemo(
-    () => normalizeWhitespace(question.code.content),
-    [question.code.content],
-  );
+  const code = useMemo(() => normalizeWhitespace(question.code.content), [
+    question.code.content,
+  ]);
+  const starter = useMemo(() => {
+    if (question.starter?.content) return normalizeWhitespace(question.starter.content);
+    return deriveStarterFromSolution(question.code.content);
+  }, [question.starter, question.code.content]);
   const [copied, setCopied] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
 
   const solutionVisible = Boolean(revealSolutions) || showSolution;
 
-  useEffect(() => {
-    if (open && !revealSolutions) setShowSolution(false);
-  }, [open, question.id, revealSolutions]);
+  const problemText =
+    question.details?.description
+      ? normalizeWhitespace(question.details.description)
+      : cleanPrompt(question.prompt);
 
   async function copy() {
     try {
@@ -55,7 +95,10 @@ export function AccordionItem({
       <button
         type="button"
         className="flex w-full items-center justify-between gap-3 px-6 py-4 text-left"
-        onClick={onToggleOpen}
+        onClick={() => {
+          if (open && !revealSolutions) setShowSolution(false);
+          onToggleOpen();
+        }}
       >
         <div className="min-w-0">
           <div className="truncate text-sm font-semibold text-cc-text">
@@ -78,9 +121,75 @@ export function AccordionItem({
 
       {open ? (
         <div className="space-y-4 px-6 pb-5">
-          <p className="text-sm font-medium leading-relaxed text-cc-text">
-            {question.prompt}
-          </p>
+          <div className="space-y-2">
+            <div className="text-xs font-extrabold uppercase tracking-wide text-cc-muted">
+              Problem
+            </div>
+            <div className="text-sm font-medium leading-relaxed text-cc-text whitespace-pre-line">
+              {problemText}
+            </div>
+          </div>
+
+          {question.details?.examples?.length ? (
+            <div className="rounded-xl border border-cc-border bg-cc-surface2 p-4">
+              <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-cc-muted">
+                Examples
+              </div>
+              <div className="space-y-3">
+                {question.details.examples.map((ex, idx) => (
+                  <div key={idx} className="rounded-lg border border-cc-border bg-cc-bg p-3">
+                    <div className="mb-2 text-xs font-bold text-cc-text">
+                      Example {idx + 1}
+                    </div>
+                    <pre className="whitespace-pre-wrap text-xs font-semibold leading-relaxed text-cc-muted">
+{`Input: ${ex.input}\nOutput: ${ex.output}${ex.explanation ? `\nExplanation: ${ex.explanation}` : ""}`}
+                    </pre>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-xl border border-cc-border bg-cc-surface2 p-4">
+              <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-cc-muted">
+                Examples
+              </div>
+              <div className="text-xs font-semibold text-cc-muted">
+                No examples added yet for this prompt.
+              </div>
+            </div>
+          )}
+
+          {question.details?.constraints?.length ? (
+            <div className="rounded-xl border border-cc-border bg-cc-surface2 p-4">
+              <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-cc-muted">
+                Constraints
+              </div>
+              <div className="space-y-1 text-xs font-semibold text-cc-muted">
+                {question.details.constraints.map((c) => (
+                  <div key={c}>• {c}</div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-xl border border-cc-border bg-cc-surface2 p-4">
+              <div className="mb-2 text-xs font-extrabold uppercase tracking-wide text-cc-muted">
+                Constraints
+              </div>
+              <div className="text-xs font-semibold text-cc-muted">
+                No constraints added yet for this prompt.
+              </div>
+            </div>
+          )}
+
+          <div className="rounded-xl border border-cc-border bg-cc-surface2 p-5">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <div className="text-sm font-semibold text-cc-text">Starter (JS)</div>
+              <div className="text-xs font-semibold text-cc-muted">Write yours first, then reveal</div>
+            </div>
+            <pre className="overflow-x-auto rounded-lg bg-cc-bg p-4 text-xs leading-relaxed text-cc-text">
+              <code className="font-mono">{starter}</code>
+            </pre>
+          </div>
 
           <div className="rounded-xl border border-indigo-800/90 bg-cc-surface2 p-5 shadow-glow">
             <div className="mb-3 flex items-center justify-between gap-3">
