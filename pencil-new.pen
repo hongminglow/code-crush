@@ -631,35 +631,201 @@
                     },
                     {
                       "type": "frame",
-                      "id": "DVhWb",
+                      "id": "NNdr8",
                       "name": "Body",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": "$space-4",
+                      "gap": 16,
                       "padding": [
-                        "$space-6",
-                        "$space-5"
+                        24,
+                        20
                       ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "WsgFv",
-                          "fill": "$color-text",
-                          "textGrowth": "fixed-width",
+                          "type": "frame",
+                          "id": "WtcZ5",
+                          "name": "Problem",
                           "width": "fill_container",
-                          "content": "Prompt: Given nums[] and target, find two distinct indices i,j such that nums[i] + nums[j] = target.",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Mv7Oi",
+                              "fill": "#6366F1",
+                              "content": "Problem",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "750"
+                            },
+                            {
+                              "type": "text",
+                              "id": "UkymG",
+                              "fill": "#F8FAFC",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Given an array of integers nums and an integer target, return indices of two distinct numbers such that they add up to target.\nYou may assume exactly one solution exists. Do not use the same element twice.",
+                              "lineHeight": 1.45,
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "eZGvs",
-                          "name": "Answer Card",
+                          "id": "Csf5l",
+                          "name": "Examples",
                           "width": "fill_container",
-                          "fill": "$color-surface-2",
-                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "KBObP",
+                              "name": "Example Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "PRGYq",
+                                  "fill": "#A5B4FC",
+                                  "content": "Example 1",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "qLjXU",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Input: nums = [2,7,11,15], target = 9\nOutput: [0,1]\nExplanation: nums[0] + nums[1] = 2 + 7 = 9.",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Knm5M",
+                          "name": "Constraints",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "OAtWX",
+                              "name": "Constraints Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "RU8MO",
+                                  "fill": "#A5B4FC",
+                                  "content": "Constraints",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "OdDjs",
+                                  "fill": "#94A3B8",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "• 2 ≤ nums.length ≤ 10^5\n• -10^9 ≤ nums[i] ≤ 10^9\n• -10^9 ≤ target ≤ 10^9\n• Exactly one valid answer exists.",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Jj4Fa",
+                          "name": "Starter",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "uPT4h",
+                              "name": "Starter Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "4sirS",
+                                  "fill": "#A5B4FC",
+                                  "content": "Starter (JS)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "d0UTY",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "function twoSum(nums, target) {\n  // TODO: return [i, j]\n}\n",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HVCi6",
+                          "name": "Solution Card",
+                          "width": "fill_container",
+                          "fill": "#0F172A",
+                          "cornerRadius": 12,
                           "stroke": {
                             "align": "inside",
                             "thickness": 1,
@@ -672,52 +838,104 @@
                             "blur": 20
                           },
                           "layout": "vertical",
-                          "gap": "$space-3",
+                          "gap": 12,
                           "padding": 20,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "i9cBR",
-                              "fill": "$color-accent",
-                              "content": "Solution (Code)",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "750"
+                              "type": "frame",
+                              "id": "x00xx",
+                              "name": "Solution Header",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "VcTlj",
+                                  "name": "Left",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "lUN0A",
+                                      "fill": "#6366F1",
+                                      "content": "Solution",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 13,
+                                      "fontWeight": "750"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "wikpM",
+                                      "fill": "#94A3B8",
+                                      "content": "Hidden by default (no spoilers)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "7BRtC",
+                                  "name": "Show Button",
+                                  "height": 28,
+                                  "fill": "transparent",
+                                  "cornerRadius": 10,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#312E81"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    10,
+                                    6
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "z3rh5",
+                                      "width": 16,
+                                      "height": 16,
+                                      "iconFontName": "eye",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "#A5B4FC"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "kvxvw",
+                                      "fill": "#A5B4FC",
+                                      "content": "Show",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "750"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "type": "text",
-                              "id": "zVPUh",
-                              "fill": "$color-text",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "function twoSum(nums, target) {\n  const seen = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const need = target - nums[i];\n    if (seen.has(need)) return [seen.get(need), i];\n    seen.set(nums[i], i);\n  }\n  return [];\n}",
-                              "lineHeight": 1.45,
-                              "fontFamily": "JetBrains Mono",
-                              "fontSize": 12,
+                              "id": "StyD6",
+                              "fill": "#F8FAFC",
+                              "content": "Solution hidden. Click Show to reveal.",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
                               "fontWeight": "500"
                             },
                             {
                               "type": "text",
-                              "id": "81QuU",
-                              "fill": "$color-muted",
-                              "content": "Time: O(n)  •  Space: O(n)",
+                              "id": "EZljn",
+                              "fill": "#94A3B8",
+                              "content": "Tip: Use a hash map to store seen values → index.",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
                             }
                           ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "vsXMo",
-                          "fill": "$color-muted",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Edge cases: duplicates, negative numbers, multiple valid pairs; be careful not to reuse the same index.",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
                         }
                       ]
                     }
@@ -2728,35 +2946,201 @@
                     },
                     {
                       "type": "frame",
-                      "id": "A0Yjq",
+                      "id": "V6mUD",
                       "name": "Body",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": "$space-4",
+                      "gap": 16,
                       "padding": [
-                        "$space-6",
-                        "$space-5"
+                        24,
+                        20
                       ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "GJYgb",
-                          "fill": "$color-text",
-                          "textGrowth": "fixed-width",
+                          "type": "frame",
+                          "id": "dScc2",
+                          "name": "Problem",
                           "width": "fill_container",
-                          "content": "Prompt: A BST requires all values in left subtree < node < all values in right subtree (for every node).",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wFbCo",
+                              "fill": "#6366F1",
+                              "content": "Problem",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "750"
+                            },
+                            {
+                              "type": "text",
+                              "id": "wfzzy",
+                              "fill": "#F8FAFC",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Given the root of a binary tree, determine if it is a valid binary search tree (BST).\nA BST is valid if for every node, all values in the left subtree are strictly less than the node’s value, and all values in the right subtree are strictly greater.",
+                              "lineHeight": 1.45,
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "tSCwG",
-                          "name": "Answer Card",
+                          "id": "NapC8",
+                          "name": "Examples",
                           "width": "fill_container",
-                          "fill": "$color-surface-2",
-                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "QSkp0",
+                              "name": "Example Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "MEIHv",
+                                  "fill": "#A5B4FC",
+                                  "content": "Example 1",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "TyI7R",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Input: root = [2,1,3]\nOutput: true\nExplanation: 1 < 2 < 3 and subtrees satisfy BST rules.",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nrQ1z",
+                          "name": "Constraints",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "6x1LG",
+                              "name": "Constraints Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xmmP6",
+                                  "fill": "#A5B4FC",
+                                  "content": "Constraints",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "aGStv",
+                                  "fill": "#94A3B8",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "• The number of nodes is in the range [1, 10^4]\n• -2^31 ≤ Node.val ≤ 2^31 - 1",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hMIAt",
+                          "name": "Starter",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "p1rNk",
+                              "name": "Starter Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "BXmqU",
+                                  "fill": "#A5B4FC",
+                                  "content": "Starter (JS)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "p95mx",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "function isValidBST(root) {\n  // TODO\n}\n",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wK8xY",
+                          "name": "Solution Card",
+                          "width": "fill_container",
+                          "fill": "#0F172A",
+                          "cornerRadius": 12,
                           "stroke": {
                             "align": "inside",
                             "thickness": 1,
@@ -2769,52 +3153,104 @@
                             "blur": 20
                           },
                           "layout": "vertical",
-                          "gap": "$space-3",
+                          "gap": 12,
                           "padding": 20,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "p3qUu",
-                              "fill": "$color-accent",
-                              "content": "Solution (Code)",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "750"
+                              "type": "frame",
+                              "id": "gZ46U",
+                              "name": "Solution Header",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Jwod2",
+                                  "name": "Left",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "SrXWc",
+                                      "fill": "#6366F1",
+                                      "content": "Solution",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 13,
+                                      "fontWeight": "750"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "uTw9h",
+                                      "fill": "#94A3B8",
+                                      "content": "Hidden by default (no spoilers)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "SOPy7",
+                                  "name": "Show Button",
+                                  "height": 28,
+                                  "fill": "transparent",
+                                  "cornerRadius": 10,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#312E81"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    10,
+                                    6
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "ZOivP",
+                                      "width": 16,
+                                      "height": 16,
+                                      "iconFontName": "eye",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "#A5B4FC"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "7mIz7",
+                                      "fill": "#A5B4FC",
+                                      "content": "Show",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "750"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "type": "text",
-                              "id": "oEKDW",
-                              "fill": "$color-text",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "function isValidBST(root) {\n  function dfs(node, low, high) {\n    if (!node) return true;\n    if (node.val <= low || node.val >= high) return false;\n    return dfs(node.left, low, node.val) && dfs(node.right, node.val, high);\n  }\n  return dfs(root, -Infinity, Infinity);\n}",
-                              "lineHeight": 1.45,
-                              "fontFamily": "JetBrains Mono",
-                              "fontSize": 12,
+                              "id": "AVUin",
+                              "fill": "#F8FAFC",
+                              "content": "Solution hidden. Click Show to reveal.",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
                               "fontWeight": "500"
                             },
                             {
                               "type": "text",
-                              "id": "pfDNj",
-                              "fill": "$color-muted",
-                              "content": "Time: O(n)  •  Space: O(h)",
+                              "id": "gJyob",
+                              "fill": "#94A3B8",
+                              "content": "Tip: Carry (low, high) bounds through recursion.",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
                             }
                           ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "Vr3iv",
-                          "fill": "$color-muted",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Gotcha: local parent checks are NOT enough; you must carry bounds through recursion.",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
                         }
                       ]
                     }
@@ -4378,35 +4814,201 @@
                     },
                     {
                       "type": "frame",
-                      "id": "9kRo9",
+                      "id": "v9cAo",
                       "name": "Body",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": "$space-4",
+                      "gap": 16,
                       "padding": [
-                        "$space-6",
-                        "$space-5"
+                        24,
+                        20
                       ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "Lhfiw",
-                          "fill": "$color-text",
-                          "textGrowth": "fixed-width",
+                          "type": "frame",
+                          "id": "OO4cy",
+                          "name": "Problem",
                           "width": "fill_container",
-                          "content": "Prompt: Given numCourses and prerequisites edges, determine if you can finish all courses.",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "3n2DQ",
+                              "fill": "#6366F1",
+                              "content": "Problem",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "750"
+                            },
+                            {
+                              "type": "text",
+                              "id": "104kI",
+                              "fill": "#F8FAFC",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "There are numCourses courses labeled 0..numCourses-1. You are given prerequisites where [a,b] means you must take b before a.\nReturn true if you can finish all courses (i.e., the prerequisite graph has no cycle).",
+                              "lineHeight": 1.45,
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "NyBXG",
-                          "name": "Answer Card",
+                          "id": "zI7aC",
+                          "name": "Examples",
                           "width": "fill_container",
-                          "fill": "$color-surface-2",
-                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "z4QwL",
+                              "name": "Example Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "pQmOm",
+                                  "fill": "#A5B4FC",
+                                  "content": "Example 1",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "PN8MJ",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Input: numCourses = 2, prerequisites = [[1,0]]\nOutput: true\nExplanation: Take course 0, then course 1.",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FZMur",
+                          "name": "Constraints",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "hqCJr",
+                              "name": "Constraints Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ZCz6e",
+                                  "fill": "#A5B4FC",
+                                  "content": "Constraints",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fOB1g",
+                                  "fill": "#94A3B8",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "• 1 ≤ numCourses ≤ 10^5\n• 0 ≤ prerequisites.length ≤ 2*10^5\n• prerequisites[i] = [ai, bi] with 0 ≤ ai, bi < numCourses",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SEdUJ",
+                          "name": "Starter",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f9tMS",
+                              "name": "Starter Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HBhyc",
+                                  "fill": "#A5B4FC",
+                                  "content": "Starter (JS)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "uY2RO",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "function canFinish(numCourses, prerequisites) {\n  // TODO\n}\n",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7gYjx",
+                          "name": "Solution Card",
+                          "width": "fill_container",
+                          "fill": "#0F172A",
+                          "cornerRadius": 12,
                           "stroke": {
                             "align": "inside",
                             "thickness": 1,
@@ -4419,51 +5021,104 @@
                             "blur": 20
                           },
                           "layout": "vertical",
-                          "gap": "$space-3",
+                          "gap": 12,
                           "padding": 20,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "OTuAT",
-                              "fill": "$color-accent",
-                              "content": "Solution (Code)",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "750"
+                              "type": "frame",
+                              "id": "ChIoA",
+                              "name": "Solution Header",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "13bCy",
+                                  "name": "Left",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "wLeBp",
+                                      "fill": "#6366F1",
+                                      "content": "Solution",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 13,
+                                      "fontWeight": "750"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "4b5tr",
+                                      "fill": "#94A3B8",
+                                      "content": "Hidden by default (no spoilers)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "cTILk",
+                                  "name": "Show Button",
+                                  "height": 28,
+                                  "fill": "transparent",
+                                  "cornerRadius": 10,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#312E81"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    10,
+                                    6
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "XLfFk",
+                                      "width": 16,
+                                      "height": 16,
+                                      "iconFontName": "eye",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "#A5B4FC"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "lrKZh",
+                                      "fill": "#A5B4FC",
+                                      "content": "Show",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "750"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "type": "text",
-                              "id": "x04py",
-                              "fill": "$color-text",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "function canFinish(numCourses, prerequisites) {\n  const adj = Array.from({ length: numCourses }, () => []);\n  const indeg = Array(numCourses).fill(0);\n  for (const [a, b] of prerequisites) {\n    adj[b].push(a);\n    indeg[a]++;\n  }\n  const q = [];\n  for (let i = 0; i < numCourses; i++) if (indeg[i] === 0) q.push(i);\n  let seen = 0;\n  for (let qi = 0; qi < q.length; qi++) {\n    const v = q[qi];\n    seen++;\n    for (const nei of adj[v]) {\n      if (--indeg[nei] === 0) q.push(nei);\n    }\n  }\n  return seen === numCourses;\n}",
-                              "lineHeight": 1.45,
-                              "fontFamily": "JetBrains Mono",
-                              "fontSize": 12,
+                              "id": "4ZAS8",
+                              "fill": "#F8FAFC",
+                              "content": "Solution hidden. Click Show to reveal.",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
                               "fontWeight": "500"
                             },
                             {
                               "type": "text",
-                              "id": "dJbEi",
-                              "fill": "$color-muted",
-                              "content": "Time: O(V+E)  •  Space: O(V+E)",
+                              "id": "d0iuK",
+                              "fill": "#94A3B8",
+                              "content": "Tip: Use topo sort or DFS coloring to detect cycles.",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
                             }
                           ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "0pJ0w",
-                          "fill": "$color-muted",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Alternative: DFS with 3-state coloring (unvisited/visiting/visited) to detect back edges.",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
                         }
                       ]
                     }
@@ -6027,35 +6682,201 @@
                     },
                     {
                       "type": "frame",
-                      "id": "4isy8",
+                      "id": "7uTRz",
                       "name": "Body",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": "$space-4",
+                      "gap": 16,
                       "padding": [
-                        "$space-6",
-                        "$space-5"
+                        24,
+                        20
                       ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "49tRv",
-                          "fill": "$color-text",
-                          "textGrowth": "fixed-width",
+                          "type": "frame",
+                          "id": "2xSMx",
+                          "name": "Problem",
                           "width": "fill_container",
-                          "content": "Prompt: Given coins[] and amount, return minimum number of coins to make amount (or -1).",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "5ESEi",
+                              "fill": "#6366F1",
+                              "content": "Problem",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "750"
+                            },
+                            {
+                              "type": "text",
+                              "id": "egrRA",
+                              "fill": "#F8FAFC",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "You are given an integer array coins and an integer amount. Return the minimum number of coins needed to make up that amount.\nIf that amount cannot be made up by any combination of the coins, return -1.",
+                              "lineHeight": 1.45,
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "4Y9AZ",
-                          "name": "Answer Card",
+                          "id": "XY5N5",
+                          "name": "Examples",
                           "width": "fill_container",
-                          "fill": "$color-surface-2",
-                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Fwbil",
+                              "name": "Example Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "e3pd3",
+                                  "fill": "#A5B4FC",
+                                  "content": "Example 1",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "lsy9f",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Input: coins = [1,2,5], amount = 11\nOutput: 3\nExplanation: 11 = 5 + 5 + 1.",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "M75u4",
+                          "name": "Constraints",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "wAquD",
+                              "name": "Constraints Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "vEDie",
+                                  "fill": "#A5B4FC",
+                                  "content": "Constraints",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "wY67f",
+                                  "fill": "#94A3B8",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "• 1 ≤ coins.length ≤ 12\n• 1 ≤ coins[i] ≤ 2^31 - 1\n• 0 ≤ amount ≤ 10^4",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "EYJUQ",
+                          "name": "Starter",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "SR2uG",
+                              "name": "Starter Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "rWR8f",
+                                  "fill": "#A5B4FC",
+                                  "content": "Starter (JS)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "iXF5O",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "function coinChange(coins, amount) {\n  // TODO\n}\n",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ls9Or",
+                          "name": "Solution Card",
+                          "width": "fill_container",
+                          "fill": "#0F172A",
+                          "cornerRadius": 12,
                           "stroke": {
                             "align": "inside",
                             "thickness": 1,
@@ -6068,51 +6889,104 @@
                             "blur": 20
                           },
                           "layout": "vertical",
-                          "gap": "$space-3",
+                          "gap": 12,
                           "padding": 20,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "oNd74",
-                              "fill": "$color-accent",
-                              "content": "Solution (Code)",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "750"
+                              "type": "frame",
+                              "id": "SNkRG",
+                              "name": "Solution Header",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "b8Ild",
+                                  "name": "Left",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "iyZAW",
+                                      "fill": "#6366F1",
+                                      "content": "Solution",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 13,
+                                      "fontWeight": "750"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "59FUw",
+                                      "fill": "#94A3B8",
+                                      "content": "Hidden by default (no spoilers)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "mNOUo",
+                                  "name": "Show Button",
+                                  "height": 28,
+                                  "fill": "transparent",
+                                  "cornerRadius": 10,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#312E81"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    10,
+                                    6
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "23RYd",
+                                      "width": 16,
+                                      "height": 16,
+                                      "iconFontName": "eye",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "#A5B4FC"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "UKbGj",
+                                      "fill": "#A5B4FC",
+                                      "content": "Show",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "750"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "type": "text",
-                              "id": "NME6k",
-                              "fill": "$color-text",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "function coinChange(coins, amount) {\n  const INF = amount + 1;\n  const dp = Array(amount + 1).fill(INF);\n  dp[0] = 0;\n  for (let a = 1; a <= amount; a++) {\n    for (const c of coins) {\n      if (a - c >= 0) dp[a] = Math.min(dp[a], dp[a - c] + 1);\n    }\n  }\n  return dp[amount] === INF ? -1 : dp[amount];\n}",
-                              "lineHeight": 1.45,
-                              "fontFamily": "JetBrains Mono",
-                              "fontSize": 12,
+                              "id": "HWhYM",
+                              "fill": "#F8FAFC",
+                              "content": "Solution hidden. Click Show to reveal.",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
                               "fontWeight": "500"
                             },
                             {
                               "type": "text",
-                              "id": "KPWzl",
-                              "fill": "$color-muted",
-                              "content": "Time: O(amount·n)  •  Space: O(amount)",
+                              "id": "ZIloq",
+                              "fill": "#94A3B8",
+                              "content": "Tip: Bottom-up dp[a] = min(dp[a-c] + 1).",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
                             }
                           ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "FDtR8",
-                          "fill": "$color-muted",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Tip: only add 1 if dp[a-c] is not INF.",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
                         }
                       ]
                     }
@@ -7676,35 +8550,201 @@
                     },
                     {
                       "type": "frame",
-                      "id": "2JLmR",
+                      "id": "cAwFe",
                       "name": "Body",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": "$space-4",
+                      "gap": 16,
                       "padding": [
-                        "$space-6",
-                        "$space-5"
+                        24,
+                        20
                       ],
                       "children": [
                         {
-                          "type": "text",
-                          "id": "RhFMZ",
-                          "fill": "$color-text",
-                          "textGrowth": "fixed-width",
+                          "type": "frame",
+                          "id": "ryBX9",
+                          "name": "Problem",
                           "width": "fill_container",
-                          "content": "Prompt: Given a snippet with console.log + Promise.then + setTimeout, explain exact print order and why.",
-                          "lineHeight": 1.45,
-                          "fontFamily": "Inter",
-                          "fontSize": 13,
-                          "fontWeight": "500"
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ihmIi",
+                              "fill": "#6366F1",
+                              "content": "Problem",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "750"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Lx5b0",
+                              "fill": "#F8FAFC",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Given a JavaScript snippet containing synchronous logs, Promise microtasks, and timer macrotasks, predict the exact console output order and explain why it happens.",
+                              "lineHeight": 1.45,
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            }
+                          ]
                         },
                         {
                           "type": "frame",
-                          "id": "6OEWD",
-                          "name": "Answer Card",
+                          "id": "VOkiJ",
+                          "name": "Examples",
                           "width": "fill_container",
-                          "fill": "$color-surface-2",
-                          "cornerRadius": "$radius-md",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "dyBiM",
+                              "name": "Example Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "MkldJ",
+                                  "fill": "#A5B4FC",
+                                  "content": "Example 1",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "HQpIE",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Input:\nconsole.log('A');\nPromise.resolve().then(() => console.log('micro'));\nsetTimeout(() => console.log('macro'), 0);\nconsole.log('B');\n\nOutput:\nA\nB\nmicro\nmacro",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "e24Sm",
+                          "name": "Constraints",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "5y9VX",
+                              "name": "Constraints Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xEkAy",
+                                  "fill": "#A5B4FC",
+                                  "content": "Constraints",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "ybtrR",
+                                  "fill": "#94A3B8",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "• Assume standard JS event loop semantics\n• Explain microtasks vs macrotasks\n• Mention Node.js nextTick differences if relevant",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HL13B",
+                          "name": "Starter",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 10,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "kUVJD",
+                              "name": "Starter Card",
+                              "width": "fill_container",
+                              "fill": "#0F172A",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#1E293B"
+                              },
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": 16,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "bkebq",
+                                  "fill": "#A5B4FC",
+                                  "content": "Starter (JS)",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "750"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "l1KfE",
+                                  "fill": "#F8FAFC",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "// Predict the output order before running:\n// 1) synchronous code\n// 2) microtasks (Promise.then)\n// 3) macrotasks (setTimeout)\n",
+                                  "lineHeight": 1.45,
+                                  "fontFamily": "JetBrains Mono",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RCPHo",
+                          "name": "Solution Card",
+                          "width": "fill_container",
+                          "fill": "#0F172A",
+                          "cornerRadius": 12,
                           "stroke": {
                             "align": "inside",
                             "thickness": 1,
@@ -7717,54 +8757,104 @@
                             "blur": 20
                           },
                           "layout": "vertical",
-                          "gap": "$space-3",
+                          "gap": 12,
                           "padding": 20,
                           "children": [
                             {
-                              "type": "text",
-                              "id": "prgoe",
-                              "fill": "$color-accent",
-                              "content": "Example (Code)",
-                              "fontFamily": "Inter",
-                              "fontSize": 13,
-                              "fontWeight": "750"
+                              "type": "frame",
+                              "id": "HWpzh",
+                              "name": "Solution Header",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "8XOBC",
+                                  "name": "Left",
+                                  "layout": "vertical",
+                                  "gap": 2,
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "8ADFU",
+                                      "fill": "#6366F1",
+                                      "content": "Solution",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 13,
+                                      "fontWeight": "750"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "OImtp",
+                                      "fill": "#94A3B8",
+                                      "content": "Hidden by default (no spoilers)",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "N6Dtm",
+                                  "name": "Show Button",
+                                  "height": 28,
+                                  "fill": "transparent",
+                                  "cornerRadius": 10,
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1,
+                                    "fill": "#312E81"
+                                  },
+                                  "gap": 6,
+                                  "padding": [
+                                    10,
+                                    6
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "7AAhX",
+                                      "width": 16,
+                                      "height": 16,
+                                      "iconFontName": "eye",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "#A5B4FC"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "LoVWa",
+                                      "fill": "#A5B4FC",
+                                      "content": "Show",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 12,
+                                      "fontWeight": "750"
+                                    }
+                                  ]
+                                }
+                              ]
                             },
                             {
                               "type": "text",
-                              "id": "nfQyM",
-                              "fill": "$color-text",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "console.log('A');\nPromise.resolve().then(() => console.log('micro'));\nsetTimeout(() => console.log('macro'), 0);\nconsole.log('B');\n\n// Output: A, B, micro, macro",
-                              "lineHeight": 1.45,
-                              "fontFamily": "JetBrains Mono",
-                              "fontSize": 12,
+                              "id": "wHEmg",
+                              "fill": "#F8FAFC",
+                              "content": "Solution hidden. Click Show to reveal.",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
                               "fontWeight": "500"
                             },
                             {
                               "type": "text",
-                              "id": "JDP8F",
-                              "fill": "$color-muted",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Tip: In Node, process.nextTick is even higher priority than Promise microtasks.",
-                              "lineHeight": 1.45,
+                              "id": "jqqB2",
+                              "fill": "#94A3B8",
+                              "content": "Tip: Promise callbacks run after the current call stack, before timers.",
                               "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontWeight": "600"
                             }
                           ]
-                        },
-                        {
-                          "type": "text",
-                          "id": "tBVFS",
-                          "fill": "$color-muted",
-                          "textGrowth": "fixed-width",
-                          "width": "fill_container",
-                          "content": "Follow-up: how would you test this deterministically? (use fake timers, avoid relying on timing).",
-                          "fontFamily": "Inter",
-                          "fontSize": 12,
-                          "fontWeight": "500"
                         }
                       ]
                     }

@@ -13,7 +13,9 @@ function normalizeWhitespace(text: string) {
 }
 
 function cleanPrompt(prompt: string) {
-  return normalizeWhitespace(prompt).replace(/^\s*Prompt:\s*/i, "").trim();
+  return normalizeWhitespace(prompt)
+    .replace(/^\s*Prompt:\s*/i, "")
+    .trim();
 }
 
 function deriveStarterFromSolution(solution: string) {
@@ -29,11 +31,11 @@ function deriveStarterFromSolution(solution: string) {
     const className = cls[1];
     const methodNames = Array.from(
       new Set(
-        Array.from(
-          s.matchAll(/\n\s*([A-Za-z_$][\w$]*)\s*\(([^)]*)\)\s*\{/g),
-        )
+        Array.from(s.matchAll(/\n\s*([A-Za-z_$][\w$]*)\s*\(([^)]*)\)\s*\{/g))
           .map((m) => ({ name: m[1], args: m[2] }))
-          .filter((m) => m.name !== "if" && m.name !== "for" && m.name !== "while"),
+          .filter(
+            (m) => m.name !== "if" && m.name !== "for" && m.name !== "while",
+          ),
       ),
     );
 
@@ -63,11 +65,13 @@ export function AccordionItem({
   onToggleSolved: () => void;
   revealSolutions?: boolean;
 }) {
-  const code = useMemo(() => normalizeWhitespace(question.code.content), [
-    question.code.content,
-  ]);
+  const code = useMemo(
+    () => normalizeWhitespace(question.code.content),
+    [question.code.content],
+  );
   const starter = useMemo(() => {
-    if (question.starter?.content) return normalizeWhitespace(question.starter.content);
+    if (question.starter?.content)
+      return normalizeWhitespace(question.starter.content);
     return deriveStarterFromSolution(question.code.content);
   }, [question.starter, question.code.content]);
   const [copied, setCopied] = useState(false);
@@ -75,10 +79,9 @@ export function AccordionItem({
 
   const solutionVisible = Boolean(revealSolutions) || showSolution;
 
-  const problemText =
-    question.details?.description
-      ? normalizeWhitespace(question.details.description)
-      : cleanPrompt(question.prompt);
+  const problemText = question.details?.description
+    ? normalizeWhitespace(question.details.description)
+    : cleanPrompt(question.prompt);
 
   async function copy() {
     try {
@@ -137,12 +140,15 @@ export function AccordionItem({
               </div>
               <div className="space-y-3">
                 {question.details.examples.map((ex, idx) => (
-                  <div key={idx} className="rounded-lg border border-cc-border bg-cc-bg p-3">
+                  <div
+                    key={idx}
+                    className="rounded-lg border border-cc-border bg-cc-bg p-3"
+                  >
                     <div className="mb-2 text-xs font-bold text-cc-text">
                       Example {idx + 1}
                     </div>
                     <pre className="whitespace-pre-wrap text-xs font-semibold leading-relaxed text-cc-muted">
-{`Input: ${ex.input}\nOutput: ${ex.output}${ex.explanation ? `\nExplanation: ${ex.explanation}` : ""}`}
+                      {`Input: ${ex.input}\nOutput: ${ex.output}${ex.explanation ? `\nExplanation: ${ex.explanation}` : ""}`}
                     </pre>
                   </div>
                 ))}
@@ -183,8 +189,12 @@ export function AccordionItem({
 
           <div className="rounded-xl border border-cc-border bg-cc-surface2 p-5">
             <div className="mb-3 flex items-center justify-between gap-3">
-              <div className="text-sm font-semibold text-cc-text">Starter (JS)</div>
-              <div className="text-xs font-semibold text-cc-muted">Write yours first, then reveal</div>
+              <div className="text-sm font-semibold text-cc-text">
+                Starter (JS)
+              </div>
+              <div className="text-xs font-semibold text-cc-muted">
+                Write yours first, then reveal
+              </div>
             </div>
             <pre className="overflow-x-auto rounded-lg bg-cc-bg p-4 text-xs leading-relaxed text-cc-text">
               <code className="font-mono">{starter}</code>
