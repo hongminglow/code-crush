@@ -310,8 +310,7 @@ export const questions: Question[] = [
     subtitle: "Unique triplets summing to zero.",
     difficulty: "Medium",
     tags: ["sorting", "two pointers"],
-    prompt:
-      "Prompt: Return all unique triplets [a,b,c] such that a+b+c = 0.",
+    prompt: "Prompt: Return all unique triplets [a,b,c] such that a+b+c = 0.",
     code: {
       language: "js",
       content: `function threeSum(nums) {
@@ -376,8 +375,7 @@ export const questions: Question[] = [
     subtitle: "Merge overlapping ranges.",
     difficulty: "Medium",
     tags: ["sorting"],
-    prompt:
-      "Prompt: Given intervals, merge all overlapping intervals.",
+    prompt: "Prompt: Given intervals, merge all overlapping intervals.",
     code: {
       language: "js",
       content: `function merge(intervals) {
@@ -391,7 +389,10 @@ export const questions: Question[] = [
 }`,
     },
     complexity: { time: "O(n log n)", space: "O(n)" },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/merge-intervals/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/merge-intervals/",
+    },
   },
   {
     id: "arrays-find-min-rotated",
@@ -699,8 +700,7 @@ export const questions: Question[] = [
     subtitle: "Check structural equality at nodes.",
     difficulty: "Easy",
     tags: ["dfs"],
-    prompt:
-      "Prompt: Return true if subRoot is a subtree of root.",
+    prompt: "Prompt: Return true if subRoot is a subtree of root.",
     code: {
       language: "js",
       content: `function isSubtree(root, subRoot) {
@@ -1252,7 +1252,10 @@ function deserialize(data) {
 }`,
     },
     complexity: { time: "O(N * L * 26)", space: "O(N)" },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/word-ladder/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/word-ladder/",
+    },
   },
   {
     id: "graphs-alien-dictionary",
@@ -1304,7 +1307,10 @@ function deserialize(data) {
 }`,
     },
     complexity: { time: "O(total chars)", space: "O(U)" },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/alien-dictionary/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/alien-dictionary/",
+    },
   },
   {
     id: "dp-coin-change",
@@ -1473,7 +1479,10 @@ function deserialize(data) {
 }`,
     },
     complexity: { time: "O(mn)", space: "O(n)" },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/unique-paths/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/unique-paths/",
+    },
   },
   {
     id: "dp-partition-equal",
@@ -1561,7 +1570,10 @@ function deserialize(data) {
 }`,
     },
     complexity: { time: "O(mn)", space: "O(mn)" },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/edit-distance/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/edit-distance/",
+    },
   },
   {
     id: "js-event-loop-order",
@@ -1801,6 +1813,9 @@ console.log('B');
   }
 }`,
     },
-    source: { name: "LeetCode", url: "https://leetcode.com/problems/lru-cache/" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/lru-cache/",
+    },
   },
 ];
