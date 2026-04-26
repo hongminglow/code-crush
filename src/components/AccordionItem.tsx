@@ -231,7 +231,7 @@ export function AccordionItem({
               value={userCode}
               onChange={(e) => setUserCode(e.target.value)}
               onKeyDown={handleTabKey}
-              rows={Math.max(8, userCode.split("\n").length + 1)}
+              rows={Math.max(3, userCode.split("\n").length + 1)}
               spellCheck={false}
               autoCorrect="off"
               autoCapitalize="off"
