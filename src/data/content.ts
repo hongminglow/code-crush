@@ -90,6 +90,535 @@ export const questions: Question[] = [
     complexity: { time: "O(n)", space: "O(n)" },
     source: { name: "LeetCode", url: "https://leetcode.com/problems/two-sum/" },
   },
+  // ─── Arrays: widely-asked additions ──────────────────────────────────────
+  {
+    id: "arrays-best-time-stock",
+    category: "arrays",
+    title: "Best Time to Buy & Sell Stock",
+    subtitle: "Single transaction max profit.",
+    difficulty: "Easy",
+    tags: ["greedy", "sliding window"],
+    prompt: "Find the max profit from one buy-sell transaction.",
+    details: {
+      description:
+        "Given an array prices where prices[i] is the price of a stock on day i, return the maximum profit you can achieve from one transaction (buy one day, sell a later day).\nIf no profit is possible, return 0.",
+      examples: [
+        {
+          input: "prices = [7, 1, 5, 3, 6, 4]",
+          output: "5",
+          explanation:
+            "Buy on day 2 (price=1), sell on day 5 (price=6). Profit = 5.",
+        },
+        {
+          input: "prices = [7, 6, 4, 3, 1]",
+          output: "0",
+          explanation: "Prices always fall; no profitable transaction exists.",
+        },
+      ],
+      constraints: [
+        "1 ≤ prices.length ≤ 10^5",
+        "0 ≤ prices[i] ≤ 10^4",
+        "You must buy before you sell",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function maxProfit(prices) {
+  // TODO
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function maxProfit(prices) {
+  let minPrice = Infinity;
+  let maxProfit = 0;
+  for (const p of prices) {
+    if (p < minPrice) minPrice = p;
+    else if (p - minPrice > maxProfit) maxProfit = p - minPrice;
+  }
+  return maxProfit;
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(1)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+    },
+  },
+  {
+    id: "arrays-max-subarray",
+    category: "arrays",
+    title: "Maximum Subarray",
+    subtitle: "Kadane's: max contiguous sum.",
+    difficulty: "Easy",
+    tags: ["greedy", "dp"],
+    prompt: "Find the contiguous subarray with the largest sum.",
+    details: {
+      description:
+        "Given an integer array nums, find the contiguous subarray (containing at least one number) that has the largest sum and return its sum.\nThis is solved with Kadane's algorithm in O(n).",
+      examples: [
+        {
+          input: "nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+          output: "6",
+          explanation: "The subarray [4,-1,2,1] has the largest sum = 6.",
+        },
+        {
+          input: "nums = [-1]",
+          output: "-1",
+        },
+      ],
+      constraints: [
+        "1 ≤ nums.length ≤ 10^5",
+        "Array may contain negatives",
+        "At least one element must be chosen",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function maxSubArray(nums) {
+  // TODO: track current and global max
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function maxSubArray(nums) {
+  let cur = nums[0];
+  let best = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    cur = Math.max(nums[i], cur + nums[i]);
+    best = Math.max(best, cur);
+  }
+  return best;
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(1)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/maximum-subarray/",
+    },
+  },
+  {
+    id: "arrays-valid-parentheses",
+    category: "arrays",
+    title: "Valid Parentheses",
+    subtitle: "Stack-based bracket matching.",
+    difficulty: "Easy",
+    tags: ["stack"],
+    prompt: "Determine if a string of brackets is valid.",
+    details: {
+      description:
+        "Given a string containing only '(', ')', '{', '}', '[', ']', determine if the input string is valid.\nA string is valid if every open bracket is closed by the same type in the correct order, and every close bracket has a matching open bracket.",
+      examples: [
+        {
+          input: 's = "()"',
+          output: "true",
+        },
+        {
+          input: 's = "()[]{}"',
+          output: "true",
+        },
+        {
+          input: 's = "(]"',
+          output: "false",
+        },
+      ],
+      constraints: [
+        "1 ≤ s.length ≤ 10^4",
+        "s consists only of '()[]{}'",
+        "Use a stack — O(n) time, O(n) space",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function isValid(s) {
+  // TODO: use a stack
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function isValid(s) {
+  const stack = [];
+  const match = { ')': '(', '}': '{', ']': '[' };
+  for (const c of s) {
+    if (!match[c]) {
+      stack.push(c);
+    } else {
+      if (stack.pop() !== match[c]) return false;
+    }
+  }
+  return stack.length === 0;
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(n)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/valid-parentheses/",
+    },
+  },
+  {
+    id: "arrays-jump-game",
+    category: "arrays",
+    title: "Jump Game",
+    subtitle: "Greedy reach tracking.",
+    difficulty: "Medium",
+    tags: ["greedy"],
+    prompt: "Decide if you can reach the last index.",
+    details: {
+      description:
+        "Given an integer array nums where nums[i] is the maximum jump length from position i, return true if you can reach the last index starting from index 0.",
+      examples: [
+        {
+          input: "nums = [2, 3, 1, 1, 4]",
+          output: "true",
+          explanation:
+            "Jump 1 step to index 1, then 3 steps to the last index.",
+        },
+        {
+          input: "nums = [3, 2, 1, 0, 4]",
+          output: "false",
+          explanation: "You always land on index 3 where the jump length is 0.",
+        },
+      ],
+      constraints: [
+        "1 ≤ nums.length ≤ 10^4",
+        "0 ≤ nums[i] ≤ 10^5",
+        "Greedy: track the max reachable index so far",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function canJump(nums) {
+  // TODO: track maxReach
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function canJump(nums) {
+  let maxReach = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (i > maxReach) return false;
+    maxReach = Math.max(maxReach, i + nums[i]);
+  }
+  return true;
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(1)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/jump-game/",
+    },
+  },
+  {
+    id: "arrays-sliding-window-max",
+    category: "arrays",
+    title: "Sliding Window Maximum",
+    subtitle: "Deque to track window max in O(n).",
+    difficulty: "Hard",
+    tags: ["deque", "sliding window"],
+    prompt: "Return max of every sliding window of size k.",
+    details: {
+      description:
+        "Given an integer array nums and a sliding window of size k moving from left to right, return the maximum value in each window position.\nNaïve O(nk) is too slow — use a monotonic deque to achieve O(n).",
+      examples: [
+        {
+          input: "nums = [1,3,-1,-3,5,3,6,7], k = 3",
+          output: "[3, 3, 5, 5, 6, 7]",
+          explanation:
+            "Windows: [1,3,-1]→3, [3,-1,-3]→3, [-1,-3,5]→5, [-3,5,3]→5, [5,3,6]→6, [3,6,7]→7.",
+        },
+      ],
+      constraints: [
+        "1 ≤ k ≤ nums.length",
+        "Deque stores indices in decreasing value order",
+        "Remove front if it's outside the window",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function maxSlidingWindow(nums, k) {
+  // TODO: use a monotonic deque (indices)
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function maxSlidingWindow(nums, k) {
+  const deque = []; // stores indices, decreasing by value
+  const result = [];
+  for (let i = 0; i < nums.length; i++) {
+    // remove out-of-window front
+    if (deque.length && deque[0] < i - k + 1) deque.shift();
+    // maintain decreasing order
+    while (deque.length && nums[deque[deque.length - 1]] < nums[i]) deque.pop();
+    deque.push(i);
+    if (i >= k - 1) result.push(nums[deque[0]]);
+  }
+  return result;
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(k)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/sliding-window-maximum/",
+    },
+  },
+  // ─── Backtracking (categorised under arrays) ──────────────────────────────
+  {
+    id: "arrays-combination-sum",
+    category: "arrays",
+    title: "Combination Sum",
+    subtitle: "Backtrack: reuse candidates to hit target.",
+    difficulty: "Medium",
+    tags: ["backtracking"],
+    prompt: "Find all unique combinations that sum to target.",
+    details: {
+      description:
+        "Given an array of distinct integers candidates and a target integer target, return all unique combinations of candidates where the chosen numbers sum to target.\nYou may use the same number more than once. The answer can be in any order.",
+      examples: [
+        {
+          input: "candidates = [2,3,6,7], target = 7",
+          output: "[[2,2,3],[7]]",
+        },
+        {
+          input: "candidates = [2,3,5], target = 8",
+          output: "[[2,2,2,2],[2,3,3],[3,5]]",
+        },
+      ],
+      constraints: [
+        "1 ≤ candidates.length ≤ 30",
+        "All candidates are distinct positive integers",
+        "1 ≤ target ≤ 40",
+        "Each candidate may be reused unlimited times",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function combinationSum(candidates, target) {
+  const result = [];
+  // TODO: backtrack(start, current, remaining)
+  return result;
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function combinationSum(candidates, target) {
+  const result = [];
+  function backtrack(start, current, remaining) {
+    if (remaining === 0) { result.push([...current]); return; }
+    if (remaining < 0) return;
+    for (let i = start; i < candidates.length; i++) {
+      current.push(candidates[i]);
+      backtrack(i, current, remaining - candidates[i]);
+      current.pop();
+    }
+  }
+  backtrack(0, [], target);
+  return result;
+}`,
+    },
+    complexity: { time: "O(n^(t/m))", space: "O(t/m)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/combination-sum/",
+    },
+  },
+  {
+    id: "arrays-permutations",
+    category: "arrays",
+    title: "Permutations",
+    subtitle: "Backtrack: all orderings of array.",
+    difficulty: "Medium",
+    tags: ["backtracking"],
+    prompt: "Return all possible permutations of an array.",
+    details: {
+      description:
+        "Given an array nums of distinct integers, return all possible permutations in any order.\nBacktracking swaps elements in-place to explore every arrangement.",
+      examples: [
+        {
+          input: "nums = [1, 2, 3]",
+          output: "[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]",
+        },
+        {
+          input: "nums = [0, 1]",
+          output: "[[0,1],[1,0]]",
+        },
+      ],
+      constraints: [
+        "1 ≤ nums.length ≤ 6",
+        "All integers in nums are distinct",
+        "n! permutations total",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function permute(nums) {
+  const result = [];
+  // TODO: backtrack with used[] or swap trick
+  return result;
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function permute(nums) {
+  const result = [];
+  function backtrack(start) {
+    if (start === nums.length) { result.push([...nums]); return; }
+    for (let i = start; i < nums.length; i++) {
+      [nums[start], nums[i]] = [nums[i], nums[start]];
+      backtrack(start + 1);
+      [nums[start], nums[i]] = [nums[i], nums[start]];
+    }
+  }
+  backtrack(0);
+  return result;
+}`,
+    },
+    complexity: { time: "O(n * n!)", space: "O(n)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/permutations/",
+    },
+  },
+  {
+    id: "arrays-word-search",
+    category: "arrays",
+    title: "Word Search",
+    subtitle: "DFS backtrack on a letter grid.",
+    difficulty: "Medium",
+    tags: ["backtracking", "dfs", "grid"],
+    prompt: "Find if a word exists in the grid as a connected path.",
+    details: {
+      description:
+        "Given an m×n grid of characters board and a string word, return true if the word exists in the grid as a path of adjacent (up/down/left/right) cells where each cell is used at most once.",
+      examples: [
+        {
+          input:
+            'board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"',
+          output: "true",
+        },
+        {
+          input:
+            'board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"',
+          output: "true",
+        },
+        {
+          input: 'board = [["A","B"],["C","D"]], word = "ABDC"',
+          output: "false",
+        },
+      ],
+      constraints: [
+        "1 ≤ board.length, board[0].length ≤ 6",
+        "Each cell can only be used once per path",
+        "Mark visited in-place (then restore) to avoid extra space",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function exist(board, word) {
+  // TODO: DFS + backtrack from each cell
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function exist(board, word) {
+  const m = board.length, n = board[0].length;
+  function dfs(r, c, i) {
+    if (i === word.length) return true;
+    if (r < 0 || c < 0 || r >= m || c >= n || board[r][c] !== word[i]) return false;
+    const tmp = board[r][c];
+    board[r][c] = '#';
+    const found = dfs(r+1,c,i+1)||dfs(r-1,c,i+1)||dfs(r,c+1,i+1)||dfs(r,c-1,i+1);
+    board[r][c] = tmp;
+    return found;
+  }
+  for (let r = 0; r < m; r++)
+    for (let c = 0; c < n; c++)
+      if (dfs(r, c, 0)) return true;
+  return false;
+}`,
+    },
+    complexity: { time: "O(m*n*4^L)", space: "O(L)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/word-search/",
+    },
+  },
+  {
+    id: "arrays-n-queens",
+    category: "arrays",
+    title: "N-Queens",
+    subtitle: "Backtrack with column/diagonal sets.",
+    difficulty: "Hard",
+    tags: ["backtracking"],
+    prompt: "Place N queens on an N×N board with no attacks.",
+    details: {
+      description:
+        "Place n queens on an n×n chessboard such that no two queens attack each other (same row, column, or diagonal).\nReturn all distinct valid arrangements.\nEach solution is a list of strings where 'Q' marks a queen and '.' is empty.",
+      examples: [
+        {
+          input: "n = 4",
+          output:
+            '[[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]',
+          explanation: "Two distinct placements exist for n=4.",
+        },
+        {
+          input: "n = 1",
+          output: '[["Q"]]',
+        },
+      ],
+      constraints: [
+        "1 ≤ n ≤ 9",
+        "Track occupied cols, diag (r-c), anti-diag (r+c) as sets",
+        "Place one queen per row via row-by-row DFS",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function solveNQueens(n) {
+  const result = [];
+  // TODO: backtrack row by row
+  return result;
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function solveNQueens(n) {
+  const result = [];
+  const cols = new Set(), diag = new Set(), anti = new Set();
+  const board = Array.from({ length: n }, () => Array(n).fill('.'));
+  function backtrack(row) {
+    if (row === n) {
+      result.push(board.map(r => r.join('')));
+      return;
+    }
+    for (let col = 0; col < n; col++) {
+      if (cols.has(col) || diag.has(row-col) || anti.has(row+col)) continue;
+      cols.add(col); diag.add(row-col); anti.add(row+col);
+      board[row][col] = 'Q';
+      backtrack(row + 1);
+      board[row][col] = '.';
+      cols.delete(col); diag.delete(row-col); anti.delete(row+col);
+    }
+  }
+  backtrack(0);
+  return result;
+}`,
+    },
+    complexity: { time: "O(n!)", space: "O(n)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/n-queens/",
+    },
+  },
+
   {
     id: "arrays-group-anagrams",
     category: "arrays",
@@ -1001,6 +1530,179 @@ function deserialize(data) {
     source: {
       name: "LeetCode",
       url: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+    },
+  },
+  // ─── Trees: widely-asked additions ───────────────────────────────────────
+  {
+    id: "trees-max-depth",
+    category: "trees",
+    title: "Max Depth of Binary Tree",
+    subtitle: "DFS height via recursion.",
+    difficulty: "Easy",
+    tags: ["recursion", "dfs"],
+    prompt: "Find the maximum depth (height) of a binary tree.",
+    details: {
+      description:
+        "Given the root of a binary tree, return its maximum depth — the number of nodes along the longest path from the root node down to the farthest leaf node.",
+      examples: [
+        {
+          input: "root = [3,9,20,null,null,15,7]",
+          output: "3",
+          explanation: "Path 3→20→7 (or 3→20→15) has 3 nodes.",
+        },
+        {
+          input: "root = [1,null,2]",
+          output: "2",
+        },
+      ],
+      constraints: [
+        "0 ≤ number of nodes ≤ 10^4",
+        "Depth of empty tree is 0",
+        "1 + max(left depth, right depth) per node",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function maxDepth(root) {
+  // TODO: recurse left and right
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function maxDepth(root) {
+  if (!root) return 0;
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(h)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+    },
+  },
+  {
+    id: "trees-same-tree",
+    category: "trees",
+    title: "Same Tree",
+    subtitle: "Structural + value equality via recursion.",
+    difficulty: "Easy",
+    tags: ["recursion", "dfs"],
+    prompt: "Check if two binary trees are identical.",
+    details: {
+      description:
+        "Given the roots of two binary trees p and q, write a function to check if they are the same — structurally identical and with the same node values.",
+      examples: [
+        {
+          input: "p = [1,2,3], q = [1,2,3]",
+          output: "true",
+        },
+        {
+          input: "p = [1,2], q = [1,null,2]",
+          output: "false",
+          explanation: "Different structure.",
+        },
+        {
+          input: "p = [1,2,1], q = [1,1,2]",
+          output: "false",
+          explanation: "Same structure, different values.",
+        },
+      ],
+      constraints: [
+        "0 ≤ number of nodes ≤ 100",
+        "Both null → same; one null → different",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function isSameTree(p, q) {
+  // TODO: base cases then recurse
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function isSameTree(p, q) {
+  if (!p && !q) return true;
+  if (!p || !q || p.val !== q.val) return false;
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+}`,
+    },
+    complexity: { time: "O(n)", space: "O(h)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/same-tree/",
+    },
+  },
+  {
+    id: "trees-implement-trie",
+    category: "trees",
+    title: "Implement Trie",
+    subtitle: "Prefix tree with insert/search/startsWith.",
+    difficulty: "Medium",
+    tags: ["trie", "design"],
+    prompt: "Build a Trie supporting insert, search, and startsWith.",
+    details: {
+      description:
+        "Implement a Trie (prefix tree) with three operations:\n• insert(word) — adds a word\n• search(word) — returns true if the word exists\n• startsWith(prefix) — returns true if any word starts with the prefix\nEach Trie node has children (a-z map) and an isEnd flag.",
+      examples: [
+        {
+          input:
+            'trie.insert("apple"); trie.search("apple"); trie.search("app"); trie.startsWith("app"); trie.insert("app"); trie.search("app");',
+          output: "true, false, true, true",
+          explanation:
+            '"app" only becomes searchable after it is explicitly inserted.',
+        },
+      ],
+      constraints: [
+        "1 ≤ word.length ≤ 2000",
+        "word/prefix consist of lowercase English letters only",
+        "At most 3×10^4 calls in total",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `class Trie {
+  constructor() {
+    // TODO: root node with children map and isEnd
+  }
+  insert(word) {}
+  search(word) {}
+  startsWith(prefix) {}
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `class TrieNode {
+  constructor() { this.children = {}; this.isEnd = false; }
+}
+class Trie {
+  constructor() { this.root = new TrieNode(); }
+  insert(word) {
+    let node = this.root;
+    for (const ch of word) {
+      if (!node.children[ch]) node.children[ch] = new TrieNode();
+      node = node.children[ch];
+    }
+    node.isEnd = true;
+  }
+  _traverse(str) {
+    let node = this.root;
+    for (const ch of str) {
+      if (!node.children[ch]) return null;
+      node = node.children[ch];
+    }
+    return node;
+  }
+  search(word) { const n = this._traverse(word); return !!n && n.isEnd; }
+  startsWith(prefix) { return this._traverse(prefix) !== null; }
+}`,
+    },
+    complexity: { time: "O(L) per op", space: "O(totalChars)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/implement-trie-prefix-tree/",
     },
   },
   {
@@ -2052,6 +2754,189 @@ console.log('B');
     source: {
       name: "LeetCode",
       url: "https://leetcode.com/problems/lru-cache/",
+    },
+  },
+  // ─── JavaScript: widely-asked additions ──────────────────────────────────
+  {
+    id: "js-event-emitter",
+    category: "javascript",
+    title: "EventEmitter",
+    subtitle: "pub/sub with on, emit, off.",
+    difficulty: "Medium",
+    tags: ["design", "patterns"],
+    prompt: "Implement a basic event emitter class.",
+    details: {
+      description:
+        "Implement an EventEmitter class with:\n• on(event, listener) — subscribe to an event\n• emit(event, ...args) — fire all listeners with args\n• off(event, listener) — unsubscribe a specific listener\nThis is a foundational pattern used in Node.js and the DOM.",
+      examples: [
+        {
+          input:
+            'const emitter = new EventEmitter();\nconst fn = (msg) => console.log(msg);\nemitter.on("greet", fn);\nemitter.emit("greet", "hello"); // logs "hello"\nemitter.off("greet", fn);\nemitter.emit("greet", "world"); // logs nothing',
+          output: '"hello"',
+          explanation:
+            "After off(), the listener is removed and won't fire again.",
+        },
+      ],
+      constraints: [
+        "Multiple listeners can be registered per event",
+        "off() only removes the exact function reference given",
+        "emit() on an event with no listeners does nothing (no throw)",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `class EventEmitter {
+  constructor() {
+    // TODO: store listeners by event name
+  }
+  on(event, listener) {}
+  emit(event, ...args) {}
+  off(event, listener) {}
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `class EventEmitter {
+  constructor() { this.events = {}; }
+  on(event, listener) {
+    (this.events[event] ??= []).push(listener);
+    return this;
+  }
+  emit(event, ...args) {
+    (this.events[event] ?? []).forEach(fn => fn(...args));
+    return this;
+  }
+  off(event, listener) {
+    this.events[event] = (this.events[event] ?? []).filter(fn => fn !== listener);
+    return this;
+  }
+}`,
+    },
+    complexity: { time: "O(L) per emit", space: "O(E*L)" },
+    source: {
+      name: "LeetCode",
+      url: "https://leetcode.com/problems/design-an-event-emitter-class/",
+    },
+  },
+  {
+    id: "js-compose",
+    category: "javascript",
+    title: "Compose / Pipe",
+    subtitle: "Chain functions right-to-left (or left-to-right).",
+    difficulty: "Easy",
+    tags: ["functional", "higher-order"],
+    prompt: "Implement compose and pipe for function chaining.",
+    details: {
+      description:
+        "compose(...fns) returns a function that applies fns from right-to-left:\n  compose(f, g, h)(x) === f(g(h(x)))\n\npipe(...fns) is the opposite — left-to-right:\n  pipe(f, g, h)(x) === h(g(f(x)))\n\nBoth return the identity function when called with no arguments.",
+      examples: [
+        {
+          input:
+            "const double = x => x * 2;\nconst addOne = x => x + 1;\nconst composed = compose(double, addOne);\ncomposed(3);",
+          output: "8",
+          explanation: "addOne(3) = 4, then double(4) = 8.",
+        },
+        {
+          input: "const piped = pipe(double, addOne);\npiped(3);",
+          output: "7",
+          explanation: "double(3) = 6, then addOne(6) = 7.",
+        },
+      ],
+      constraints: [
+        "Each function takes exactly one argument",
+        "Handle the empty fns case (return identity)",
+        "Use reduceRight for compose, reduce for pipe",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `function compose(...fns) {
+  // TODO: right-to-left
+}
+
+function pipe(...fns) {
+  // TODO: left-to-right
+}
+`,
+    },
+    code: {
+      language: "js",
+      content: `function compose(...fns) {
+  if (fns.length === 0) return x => x;
+  return (x) => fns.reduceRight((acc, fn) => fn(acc), x);
+}
+
+function pipe(...fns) {
+  if (fns.length === 0) return x => x;
+  return (x) => fns.reduce((acc, fn) => fn(acc), x);
+}`,
+    },
+    complexity: { time: "O(n) per call", space: "O(1)" },
+    source: {
+      name: "Custom",
+      url: "https://bigfrontend.dev/problem/compose-functions",
+    },
+  },
+  {
+    id: "js-array-map-polyfill",
+    category: "javascript",
+    title: "Array.prototype.map Polyfill",
+    subtitle: "Re-implement map without using it.",
+    difficulty: "Easy",
+    tags: ["prototype", "polyfill"],
+    prompt: "Write a polyfill for Array.prototype.map.",
+    details: {
+      description:
+        "Implement myMap on Array.prototype that mimics the native Array.prototype.map.\nThe callback receives (element, index, array) and the returned array has the same length.\nAlso show the equivalent reduce-based implementation.",
+      examples: [
+        {
+          input: "[1, 2, 3].myMap(x => x * 2)",
+          output: "[2, 4, 6]",
+        },
+        {
+          input: '["a","b","c"].myMap((v, i) => `${i}:${v}`)',
+          output: '["0:a", "1:b", "2:c"]',
+          explanation: "Callback receives value and index.",
+        },
+      ],
+      constraints: [
+        "Must not use the native Array.prototype.map internally",
+        "Should handle sparse arrays (skip holes)",
+        "thisArg (optional second argument) is a stretch goal",
+      ],
+    },
+    starter: {
+      language: "js",
+      content: `Array.prototype.myMap = function(callback) {
+  // TODO: iterate and apply callback
+};
+`,
+    },
+    code: {
+      language: "js",
+      content: `Array.prototype.myMap = function(callback, thisArg) {
+  const result = [];
+  for (let i = 0; i < this.length; i++) {
+    if (i in this) {
+      result[i] = callback.call(thisArg, this[i], i, this);
+    }
+  }
+  return result;
+};
+
+// Alternative: reduce-based
+Array.prototype.myMapReduce = function(callback) {
+  return this.reduce((acc, val, i, arr) => {
+    acc.push(callback(val, i, arr));
+    return acc;
+  }, []);
+};`,
+    },
+    complexity: { time: "O(n)", space: "O(n)" },
+    source: {
+      name: "Custom",
+      url: "https://bigfrontend.dev/problem/implement-Array-prototype.map",
     },
   },
 ];
