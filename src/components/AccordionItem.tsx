@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { Difficulty, Question } from "../data/types";
 import { Chip } from "./Badge";
 import { Icon } from "./Icon";
@@ -74,8 +74,24 @@ export function AccordionItem({
       return normalizeWhitespace(question.starter.content);
     return deriveStarterFromSolution(question.code.content);
   }, [question.starter, question.code.content]);
+  const [userCode, setUserCode] = useState(() => starter);
+  const editorRef = useRef<HTMLTextAreaElement>(null);
   const [copied, setCopied] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
+
+  function handleTabKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key !== "Tab") return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const next = userCode.slice(0, start) + "  " + userCode.slice(end);
+    setUserCode(next);
+    requestAnimationFrame(() => {
+      el.selectionStart = start + 2;
+      el.selectionEnd = start + 2;
+    });
+  }
 
   const solutionVisible = Boolean(revealSolutions) || showSolution;
 
@@ -112,6 +128,11 @@ export function AccordionItem({
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {solved && (
+            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-900/70 border border-emerald-700/60">
+              <Icon name="check" className="h-3 w-3 text-emerald-300" />
+            </span>
+          )}
           <Chip variant={difficultyVariant(question.difficulty)}>
             {question.difficulty}
           </Chip>
@@ -190,15 +211,32 @@ export function AccordionItem({
           <div className="rounded-xl border border-cc-border bg-cc-surface2 p-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <div className="text-sm font-semibold text-cc-text">
-                Starter (JS)
+                Your Solution (JS)
               </div>
-              <div className="text-xs font-semibold text-cc-muted">
-                Write yours first, then reveal
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-cc-muted">
+                  Type here, then compare below
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setUserCode(starter)}
+                  className="rounded-md border border-cc-border bg-cc-bg px-2 py-1 text-xs font-semibold text-cc-muted hover:text-cc-text transition-colors"
+                >
+                  Reset
+                </button>
               </div>
             </div>
-            <pre className="overflow-x-auto rounded-lg bg-cc-bg p-4 text-xs leading-relaxed text-cc-text">
-              <code className="font-mono">{starter}</code>
-            </pre>
+            <textarea
+              ref={editorRef}
+              value={userCode}
+              onChange={(e) => setUserCode(e.target.value)}
+              onKeyDown={handleTabKey}
+              rows={Math.max(8, userCode.split("\n").length + 1)}
+              spellCheck={false}
+              autoCorrect="off"
+              autoCapitalize="off"
+              className="w-full resize-y rounded-lg border border-cc-border bg-cc-bg p-4 font-mono text-xs leading-relaxed text-cc-text placeholder-cc-muted focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+            />
           </div>
 
           <div className="rounded-xl border border-indigo-800/90 bg-cc-surface2 p-5 shadow-glow">
@@ -253,12 +291,14 @@ export function AccordionItem({
                     onToggleSolved();
                   }}
                   className={
-                    "inline-flex items-center justify-center rounded-lg border px-3 py-2 text-xs font-semibold transition-colors " +
+                    "inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-colors " +
                     (solved
-                      ? "border-indigo-800/90 bg-indigo-950/60 text-indigo-200"
+                      ? "border-emerald-700/70 bg-emerald-950/60 text-emerald-300"
                       : "border-cc-border bg-cc-bg text-cc-muted hover:text-cc-text")
                   }
+                  aria-pressed={solved}
                 >
+                  {solved && <Icon name="checkDouble" className="h-4 w-4" />}
                   {solved ? "Solved" : "Mark solved"}
                 </button>
               </div>

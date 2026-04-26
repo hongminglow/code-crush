@@ -10,7 +10,8 @@ type IconName =
   | "chevronUp"
   | "arrowRight"
   | "copy"
-  | "check";
+  | "check"
+  | "checkDouble";
 
 const common = {
   fill: "none",
@@ -112,6 +113,13 @@ export function Icon({
       return (
         <svg viewBox="0 0 24 24" className={className} {...common}>
           <path d="M20 6L9 17l-5-5" />
+        </svg>
+      );
+    case "checkDouble":
+      return (
+        <svg viewBox="0 0 24 24" className={className} {...common}>
+          <path d="M18 6 7 17l-5-5" />
+          <path d="M22 10l-7.5 7.5L13 16" />
         </svg>
       );
     default:
