@@ -101,6 +101,7 @@ export default function App() {
     if (window.location.hash.replace(/^#/, "") !== activeCategory) {
       window.location.hash = activeCategory;
     }
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [activeCategory]);
 
   useEffect(() => {
