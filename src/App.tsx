@@ -51,17 +51,29 @@ export default function App() {
   const [solvedIds, setSolvedIds] = useState<Set<string>>(() =>
     loadSolvedIds(),
   );
-  const solvedCount = solvedIds.size;
+  const solvedCount = useMemo(
+    () =>
+      questions.filter(
+        (q) => q.category === activeCategory && solvedIds.has(q.id),
+      ).length,
+    [activeCategory, solvedIds],
+  );
 
   const category = useMemo(
     () => categories.find((c) => c.id === activeCategory) ?? categories[0],
     [activeCategory],
   );
 
+  const DIFFICULTY_ORDER = { Easy: 0, Medium: 1, Hard: 2 } as const;
+
   const filteredQuestions = useMemo(() => {
     return questions
       .filter((q) => q.category === activeCategory)
-      .filter((q) => matchesQuestion(q, queryNorm));
+      .filter((q) => matchesQuestion(q, queryNorm))
+      .sort(
+        (a, b) =>
+          DIFFICULTY_ORDER[a.difficulty] - DIFFICULTY_ORDER[b.difficulty],
+      );
   }, [activeCategory, queryNorm]);
 
   const [expandedId, setExpandedId] = useState<string | undefined>(() => {
